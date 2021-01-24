@@ -1,8 +1,8 @@
 model_name = 'Bicycle_model_constrained';
 
 % Create delta and beta arrays
-delta_vals = -5:1:5;
-beta_vals = -5:1:5;
+delta_vals = -1:1:1;
+beta_vals = -1:1:1;
 
 % Number of values in each
 n_delta = length(delta_vals);
