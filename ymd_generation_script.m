@@ -1,4 +1,4 @@
-model_name = 'Bicycle_model_constrained';
+ model_name = 'Bicycle_model_constrained';
 
 % Create delta and beta arrays
 delta_vals = -1:1:1;
