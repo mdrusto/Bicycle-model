@@ -1,0 +1,4 @@
+#ifndef RTW_HEADER_lateral_dyn_constrained_types_h_
+#define RTW_HEADER_lateral_dyn_constrained_types_h_
+typedef struct hyh3qmso5r ef3gn3oi45 ;
+#endif
