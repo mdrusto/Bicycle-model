@@ -1,14 +1,16 @@
- model_name = 'Bicycle_model_nonlinear_constrained';
+ model_name = 'Bicycle_model_constrained';
 
 % Create delta and beta arrays
-delta_vals = -10:1:10;
-beta_vals = -10:1:10;
+delta_vals = -3:1:3;
+beta_vals = -3:1:3;
 
 % Number of values in each
 n_delta = length(delta_vals);
 n_beta = length(beta_vals);
 
 inputs = Simulink.SimulationInput(model_name);
+
+set_param(model_name, 'FastRestart', 'on');
 
 figure
 hold on
@@ -34,8 +36,8 @@ for delta_index = 1:n_delta
         outputs = sim(inputs);
         
         % Record the outputs
-        accel = outputs.logsout{1}.Values.Data(1)/9.81;
-        yaw_moment = outputs.logsout{2}.Values.Data(1);
+        accel = outputs.logsout{6}.Values.Data(1)/9.81;
+        yaw_moment = outputs.logsout{7}.Values.Data(1);
         accel_vals(delta_index, beta_index) = accel;
         yaw_moment_vals(delta_index, beta_index) = yaw_moment;
         
@@ -68,6 +70,8 @@ for delta_index = 1:n_delta
     end
 end
 
+set_param(model_name, 'FastRestart', 'off');
+
 % Plot x and y axes
 line([0 0], ylim)
 line(xlim, [0 0])
@@ -84,8 +88,8 @@ end
 
 % Output the control and stability values
 if exist('control', 'var')
-    disp(strcat('Control: ', num2str(control), ' Nm/deg'))
-    disp(strcat('Stability: ', num2str(stability), ' Nm/deg'))
+    disp(['Control: ', num2str(control), ' Nm/deg'])
+    disp(['Stability: ', num2str(stability), ' Nm/deg'])
 else
     disp('Either beta and/or delta values did not include 0, no control or stability calculated')
 end

@@ -265,5 +265,5 @@ mr_yaw_SetDWork ( ssGetDWork ( S , 0 ) , mxGetFieldByNumber ( ss , 0 , 1 ) )
 #include "simulink.c"
 #include "fixedpoint.c"
 #else
-#error Assertion failed: file must be compiled as a MEX-file
+#error Assertion failed: file must be compiled as a MEX-file
 #endif
